@@ -28,15 +28,17 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 /**
  * @author <a href="mailto:lfryc@redhat.com>Lukas Fryc</a>
  */
-public class TestCapabilitiesSerialization {
+public class TestCapabilitiesSerialization extends AbstractInBrowserTest {
 
     @Test
     public void whenGetCapabilitiesFromRunningSessionThenItShouldBeSerializable() {
-        RemoteWebDriver driver = new RemoteWebDriver(DesiredCapabilities.firefox());
+        RemoteWebDriver driver = new RemoteWebDriver(HUB_URL, DesiredCapabilities.firefox());
 
         Capabilities initializedCapabilities = driver.getCapabilities();
 
         assertTrue("Capabilities obtained from running session should be serializable",
                 initializedCapabilities instanceof Serializable);
+        
+        driver.quit();
     }
 }

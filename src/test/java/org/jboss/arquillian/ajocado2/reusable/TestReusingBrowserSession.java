@@ -23,10 +23,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.URL;
 
 import org.apache.commons.io.IOUtils;
-import org.jboss.arquillian.ajocado.utils.URLUtils;
 import org.junit.Test;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -36,10 +34,7 @@ import org.openqa.selenium.remote.SessionId;
 /**
  * @author <a href="mailto:lfryc@redhat.com>Lukas Fryc</a>
  */
-public class TestReusingBrowserSession {
-
-    private final URL SERVER_URL = URLUtils.buildUrl("http://127.0.0.1:4444/");
-    private final URL HUB_URL = URLUtils.buildUrl(SERVER_URL, "wd/hub");
+public class TestReusingBrowserSession extends AbstractInBrowserTest {
 
     @Test
     public void whenBrowserSessionIsCreatedThenCouldBeReused() throws UnableReuseSessionException {
