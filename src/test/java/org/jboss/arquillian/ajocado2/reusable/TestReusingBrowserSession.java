@@ -44,7 +44,7 @@ public class TestReusingBrowserSession {
     @Test
     public void whenBrowserSessionIsCreatedThenCouldBeReused() throws UnableReuseSessionException {
 
-        RemoteWebDriver driver = new RemoteWebDriver(HUB_URL, DesiredCapabilities.opera());
+        RemoteWebDriver driver = new RemoteWebDriver(HUB_URL, DesiredCapabilities.firefox());
         driver.navigate().to(SERVER_URL.toString());
         Capabilities reusedCapabilities = serializeDeserialize(driver.getCapabilities());
         SessionId reusedSessionId = new SessionId(serializeDeserialize(driver.getSessionId().toString()));
